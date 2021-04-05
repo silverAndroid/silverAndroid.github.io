@@ -1,6 +1,11 @@
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  IconDefinition,
+} from "@fortawesome/free-brands-svg-icons";
+import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { EmailLink } from "../components/EmailLink";
 
 import { TypedComponent } from "../components/Typed";
 import styles from "../styles/Home.module.css";
@@ -14,45 +19,55 @@ const strings = [
   "trying new technologies like React Native and Nest.js",
 ];
 
-const links = [
+interface EmailLink {
+  type: "email";
+}
+
+function isEmailLink(link: Link): link is EmailLink {
+  return link.type === "email";
+}
+
+type Link =
+  | EmailLink
+  | { type: string; icon: IconDefinition; label: string; link: string };
+
+const links: Link[] = [
   {
     type: "email",
-    icon: faEnvelope,
   },
   {
     type: "github",
     icon: faGithub,
     link: "https://github.com/silverAndroid",
+    label: "Github",
   },
   {
     type: "linkedin",
     icon: faLinkedin,
     link: "https://www.linkedin.com/in/rushil-perera",
+    label: "LinkedIn",
   },
   {
     type: "resume",
     icon: faFilePdf,
     link: "https://drive.google.com/open?id=1HbxbdiziN2KJHyQQS83ricXH69iSnClx",
+    label: "Resume",
   },
 ];
 
-type Unpacked<T> = T extends (infer U)[] ? U : T;
-
-type Link = Unpacked<typeof links>;
-
 export default function Home() {
-  function mapLink({ type, icon, link }: Link) {
-    const faIcon = <FontAwesomeIcon icon={icon} className={styles.icon} />;
-
-    if (link) {
-      return (
-        <a key={type} href={link} target="_blank">
-          {faIcon}
-        </a>
-      );
+  function mapLink(link: Link) {
+    if (isEmailLink(link)) {
+      return <EmailLink key="email" />;
     }
 
-    return faIcon;
+    const { type, icon, label, link: href } = link;
+    return (
+      <a key={type} className={styles.iconLink} href={href} target="_blank">
+        <FontAwesomeIcon icon={icon} className={styles.icon} />
+        {label}
+      </a>
+    );
   }
 
   return (
