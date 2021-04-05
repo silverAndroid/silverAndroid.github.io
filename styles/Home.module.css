@@ -9,3 +9,15 @@
 .typedWrapper {
   margin-top: 0;
 }
+
+.iconContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 3.2rem;
+}
+
+.icon {
+  height: 48px;
+  padding: 0 1.6rem;
+}
