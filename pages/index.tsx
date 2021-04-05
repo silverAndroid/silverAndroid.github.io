@@ -12,10 +12,10 @@ const strings = [
 
 export default function Home() {
   return (
-    <div className={styles['page-container']}>
+    <div className={styles.pageContainer}>
       <h1>Hi, I'm Rushil!</h1>
       <p
-        className={styles['typed-wrapper']}
+        className={styles.typedWrapper}
         aria-label={
           "I love " +
           strings
