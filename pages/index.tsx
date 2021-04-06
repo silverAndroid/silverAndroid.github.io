@@ -63,7 +63,13 @@ export default function Home() {
 
     const { type, icon, label, link: href } = link;
     return (
-      <a key={type} className={styles.iconLink} href={href} target="_blank">
+      <a
+        key={type}
+        tabIndex={0}
+        className={styles.iconLink}
+        href={href}
+        target="_blank"
+      >
         <FontAwesomeIcon icon={icon} className={styles.icon} />
         {label}
       </a>
