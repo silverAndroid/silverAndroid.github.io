@@ -17,8 +17,8 @@ export function EmailLink() {
         aria-label="Click to see my email"
         onClick={() => setShowEmailDialog(true)}
         onKeyDown={(event) => {
-          const { key } = event;
-          if (key === "Enter" || key === "Space") {
+          const { code } = event;
+          if (code === "Enter" || code === "Space") {
             event.preventDefault();
             setShowEmailDialog(true);
           }
