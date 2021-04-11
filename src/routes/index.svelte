@@ -1,6 +1,18 @@
 <script lang="ts">
-	import TypedComponent from '$lib/Typed.svelte';
 	import type { TypedOptions } from 'typed.js';
+	import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+	import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+	import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
+	import TypedComponent from '$lib/Typed.svelte';
+	import EmailLink from '$lib/EmailLink.svelte';
+	import IconLink from '$lib/IconLink.svelte';
+
+	interface EmailLink {
+		type: 'email';
+	}
+
+	type Link = EmailLink | { type: string; icon: IconProp; label: string; link: string };
 
 	const strings = [
 		'making web apps using Angular and React.js',
@@ -24,6 +36,34 @@
 		backSpeed: 50,
 		backDelay: 5000
 	};
+
+	function isEmailLink(link: Link): link is EmailLink {
+		return link.type === 'email';
+	}
+
+	const links: Link[] = [
+		{
+			type: 'email'
+		},
+		{
+			type: 'github',
+			icon: faGithub,
+			link: 'https://github.com/silverAndroid',
+			label: 'Github'
+		},
+		{
+			type: 'linkedin',
+			icon: faLinkedin,
+			link: 'https://www.linkedin.com/in/rushil-perera',
+			label: 'LinkedIn'
+		},
+		{
+			type: 'resume',
+			icon: faFilePdf,
+			link: 'https://drive.google.com/open?id=1HbxbdiziN2KJHyQQS83ricXH69iSnClx',
+			label: 'Resume'
+		}
+	];
 </script>
 
 <main>
@@ -32,6 +72,16 @@
 	<p class="typed-wrapper" aria-label={typedAriaLabel}>
 		<TypedComponent options={typedOptions} />
 	</p>
+
+	<div class="icon-container">
+		{#each links as linkObj}
+			{#if isEmailLink(linkObj)}
+				<EmailLink />
+			{:else}
+				<IconLink link={linkObj.link} icon={linkObj.icon} label={linkObj.label} />
+			{/if}
+		{/each}
+	</div>
 </main>
 
 <style lang="scss">
@@ -45,5 +95,16 @@
 
 	.typed-wrapper {
 		margin-top: 0;
+	}
+
+	.icon-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		margin-top: 3.2rem;
+
+		& > :global(.icon-link) {
+			padding: 0 1.6rem;
+		}
 	}
 </style>

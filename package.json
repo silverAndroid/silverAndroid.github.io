@@ -28,6 +28,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.35",
+		"@fortawesome/free-brands-svg-icons": "^5.15.3",
+		"@fortawesome/free-solid-svg-icons": "^5.15.3",
 		"typed.js": "^2.0.12"
 	}
 }
