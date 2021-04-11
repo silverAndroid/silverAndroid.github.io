@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { TypedOptions } from 'typed.js';
 	import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+
 	import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 	import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
@@ -15,12 +16,12 @@
 	type Link = EmailLink | { type: string; icon: IconProp; label: string; link: string };
 
 	const strings = [
-		'making web apps using Angular and React.js',
+		'making web apps using Angular and React',
 		'playing volleyball and badminton',
 		'writing backends using Node.js',
 		'watching anime',
 		'developing mobile apps (native or cross-platform)',
-		'trying new technologies like React Native and Nest.js'
+		'using technologies like React Native, Svelte, Typescript and more'
 	];
 
 	const typedAriaLabel =
