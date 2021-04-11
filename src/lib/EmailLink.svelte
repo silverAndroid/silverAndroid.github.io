@@ -1,13 +1,62 @@
 <script lang="ts">
-	import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+	import { icon } from '@fortawesome/fontawesome-svg-core';
+	import { faEnvelope, faTimes } from '@fortawesome/free-solid-svg-icons';
+	import { DialogOverlay, DialogContent } from 'svelte-accessible-dialog';
 
 	import FontAwesomeIcon from './FontAwesomeIcon.svelte';
+
+	let isOpen = false;
+
+	function openDialog() {
+		isOpen = true;
+	}
+
+	function closeDialog() {
+		isOpen = false;
+	}
+
+	function onKeyDown(shouldOpenDialog: boolean) {
+		return (e: KeyboardEvent) => {
+			if (e.code === 'Enter' || e.code === 'Space') {
+				if (shouldOpenDialog) {
+					openDialog();
+				} else {
+					closeDialog();
+				}
+			}
+		};
+	}
 </script>
 
-<a tabIndex="0" class="icon-link" role="button" aria-label="Click to see my email">
+<!-- svelte-ignore a11y-missing-attribute -->
+<a
+	tabIndex="0"
+	class="icon-link"
+	role="button"
+	aria-label="Click to see my email"
+	on:click={openDialog}
+	on:keydown={onKeyDown(true)}
+>
 	<FontAwesomeIcon icon={faEnvelope} />
 	<span>Email</span>
 </a>
+
+<DialogOverlay {isOpen} onDismiss={closeDialog}>
+	<DialogContent aria-label="Email address">
+		<FontAwesomeIcon
+			icon={faTimes}
+			class="close-icon"
+			tabindex="0"
+			on:click={closeDialog}
+			on:keydown={onKeyDown(false)}
+		/>
+		<p id="email-content">
+			My email is <a class="email-link" href="mailto:rushil.perera1081@gmail.com"
+				>rushil.perera1081@gmail.com</a
+			>
+		</p>
+	</DialogContent>
+</DialogOverlay>
 
 <style lang="scss">
 	.icon-link {
@@ -15,5 +64,12 @@
 		flex-direction: column;
 		align-items: center;
 		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	:global {
+		.close-icon {
+			height: 24px;
+		}
 	}
 </style>

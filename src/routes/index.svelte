@@ -105,6 +105,7 @@
 
 		& > :global(.icon-link) {
 			padding: 0 1.6rem;
+			color: inherit;
 		}
 	}
 </style>

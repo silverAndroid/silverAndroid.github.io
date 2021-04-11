@@ -6,7 +6,7 @@
 	import { icon as transformIcon } from '@fortawesome/fontawesome-svg-core';
 
 	export let icon: IconProp;
-	export const classes: string[] = [];
+	const { icon: _, class: classes = '', ...props } = $$props;
 
 	function isIconLookup(iconProp: IconProp): iconProp is IconLookup {
 		return (
@@ -40,10 +40,15 @@
 		}
 	}
 
-	const iconHtml = transformIcon(normalizeIconArgs(icon), { classes: ['icon', ...classes] }).html;
+	const iconHtml = transformIcon(normalizeIconArgs(icon), {
+		classes: ['icon', ...classes.split(' ')],
+		attributes: props
+	}).html;
 </script>
 
-{@html iconHtml}
+<span on:click on:keydown>
+	{@html iconHtml}
+</span>
 
 <style lang="scss">
 	:global(.icon) {

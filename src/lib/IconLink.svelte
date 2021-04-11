@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+
 	import FontAwesomeIcon from './FontAwesomeIcon.svelte';
 
 	export let link: string;
