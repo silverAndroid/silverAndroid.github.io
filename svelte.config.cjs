@@ -12,6 +12,11 @@ module.exports = {
 
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
+		prerender: {
+			crawl: false,
+			enabled: true
+		},
+		router: false,
 
 		vite: {
 			ssr: {
