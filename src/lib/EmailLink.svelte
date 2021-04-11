@@ -67,6 +67,10 @@
 		cursor: pointer;
 	}
 
+	#email-content {
+		overflow-wrap: break-word;
+	}
+
 	:global {
 		.close-icon {
 			height: 24px;

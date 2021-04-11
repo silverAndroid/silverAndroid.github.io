@@ -91,6 +91,8 @@
 		justify-content: center;
 		align-items: center;
 		height: 100%;
+		padding: 8px;
+		text-align: center;
 	}
 
 	.typed-wrapper {
@@ -101,11 +103,14 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
-		margin-top: 3.2rem;
+		flex-wrap: wrap;
+		// 3.2rem - 2rem so that when flex row wraps, there's still 2rem space in between rows
+		margin-top: 1.2rem;
 
 		& > :global(.icon-link) {
 			padding: 0 1.6rem;
 			color: inherit;
+			margin-top: 2rem;
 		}
 	}
 </style>
