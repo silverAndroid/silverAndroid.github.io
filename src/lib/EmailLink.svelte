@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { icon } from '@fortawesome/fontawesome-svg-core';
 	import { faEnvelope, faTimes } from '@fortawesome/free-solid-svg-icons';
 	import { DialogOverlay, DialogContent } from 'svelte-accessible-dialog';
 
 	import FontAwesomeIcon from './FontAwesomeIcon.svelte';
+	import { trackEvent } from './analytics';
 
 	let isOpen = false;
 
@@ -13,6 +13,10 @@
 
 	function closeDialog() {
 		isOpen = false;
+	}
+
+	function trackEmailClick() {
+		trackEvent('Email: Click');
 	}
 
 	function onKeyDown(shouldOpenDialog: boolean) {
@@ -51,8 +55,10 @@
 			on:keydown={onKeyDown(false)}
 		/>
 		<p id="email-content">
-			My email is <a class="email-link" href="mailto:rushil.perera1081@gmail.com"
-				>rushil.perera1081@gmail.com</a
+			My email is <a
+				class="email-link"
+				href="mailto:rushil.perera1081@gmail.com"
+				on:click={trackEmailClick}>rushil.perera1081@gmail.com</a
 			>
 		</p>
 	</DialogContent>

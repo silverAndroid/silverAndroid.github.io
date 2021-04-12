@@ -19,6 +19,9 @@ module.exports = {
 		router: false,
 
 		vite: {
+			optimizeDeps: {
+				include: ['plausible-tracker']
+			},
 			ssr: {
 				noExternal: Object.keys(pkg.dependencies || {})
 			}
