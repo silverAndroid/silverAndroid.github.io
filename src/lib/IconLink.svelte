@@ -2,14 +2,14 @@
 	import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 	import FontAwesomeIcon from './FontAwesomeIcon.svelte';
-	import { trackLink as analyticsTrackLink } from './analytics';
+	import { trackEvent } from './analytics';
 
 	export let link: string;
 	export let icon: IconProp;
 	export let label: string;
 
 	function trackLink() {
-		analyticsTrackLink(link);
+		trackEvent('Main Links: Click', { props: { url: link } });
 	}
 
 	function onKeyDown(e: KeyboardEvent) {
