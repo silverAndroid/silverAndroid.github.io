@@ -1,6 +1,5 @@
 import PlausibleFn from 'plausible-tracker';
 
-console.log(PlausibleFn);
 // Building the app returns PlausibleFn as part of an object { default: Plausible }
 // but the dev server returns the function directly
 const Plausible = PlausibleFn.default || PlausibleFn;
