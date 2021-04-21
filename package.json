@@ -32,7 +32,6 @@
 		"@fortawesome/fontawesome-svg-core": "^1.2.35",
 		"@fortawesome/free-brands-svg-icons": "^5.15.3",
 		"@fortawesome/free-solid-svg-icons": "^5.15.3",
-		"svelte-accessible-dialog": "^2.1.2",
 		"typed.js": "^2.0.12"
 	}
 }
