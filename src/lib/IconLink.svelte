@@ -7,6 +7,7 @@
 	export let link: string;
 	export let icon: IconProp;
 	export let label: string;
+	export let ariaLabel: string | undefined;
 
 	function trackLink() {
 		trackEvent('Main Links: Click', { props: { url: link } });
@@ -22,9 +23,10 @@
 <a
 	tabindex="0"
 	href={link}
+	aria-label={ariaLabel}
 	class="icon-link"
 	target="_blank"
-	rel="noreferrer"
+	rel="noreferrer noopener"
 	on:click={trackLink}
 	on:keydown={onKeyDown}
 >

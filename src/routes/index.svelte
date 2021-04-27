@@ -13,7 +13,9 @@
 		type: 'email';
 	}
 
-	type Link = EmailLink | { type: string; icon: IconProp; label: string; link: string };
+	type Link =
+		| EmailLink
+		| { type: string; icon: IconProp; label: string; link: string; aria?: string };
 
 	const strings = [
 		'making web apps using Angular and React',
@@ -56,7 +58,8 @@
 			type: 'linkedin',
 			icon: faLinkedin,
 			link: 'https://www.linkedin.com/in/rushil-perera',
-			label: 'LinkedIn'
+			label: 'LinkedIn',
+			aria: 'Linked In'
 		},
 		{
 			type: 'resume',
@@ -68,7 +71,7 @@
 </script>
 
 <main>
-	<h1>Hi, I'm Rushil!</h1>
+	<h1>Rushil Perera</h1>
 
 	<p class="typed-wrapper" aria-label={typedAriaLabel}>
 		<TypedComponent options={typedOptions} />
@@ -79,7 +82,7 @@
 			{#if isEmailLink(linkObj)}
 				<EmailLink />
 			{:else}
-				<IconLink link={linkObj.link} icon={linkObj.icon} label={linkObj.label} />
+				<IconLink link={linkObj.link} icon={linkObj.icon} label={linkObj.label} ariaLabel={linkObj.aria} />
 			{/if}
 		{/each}
 	</div>
