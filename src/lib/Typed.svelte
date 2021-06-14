@@ -5,7 +5,6 @@
 	import { onMount } from 'svelte';
 
 	export let options: TypedOptions;
-	export let ariaLabel: string;
 
 	let typedElem;
 	let typed: Typed;
@@ -34,7 +33,6 @@
 	class:blink={shouldCursorBlink}
 	class:show-cursor={showCursor}
 	bind:this={typedElem}
-	aria-label={ariaLabel}
 />
 
 <style lang="scss">
