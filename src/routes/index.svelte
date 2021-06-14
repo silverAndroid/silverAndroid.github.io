@@ -89,7 +89,10 @@
 </main>
 
 <style lang="scss">
+	$main-color: #65d5fd;
+	$accent-color: #802200;
 	main {
+		background: $main-color;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -99,8 +102,16 @@
 		text-align: center;
 	}
 
+	h1 {
+		color: $accent-color;
+	}
+
 	.typed-wrapper {
 		margin-top: 0;
+
+		& :global(.typed-string) {
+			color: $accent-color;
+		}
 	}
 
 	.icon-container {
@@ -113,7 +124,7 @@
 
 		& > :global(.icon-link) {
 			padding: 0 1.6rem;
-			color: inherit;
+			color: $accent-color;
 			margin-top: 2rem;
 		}
 	}
