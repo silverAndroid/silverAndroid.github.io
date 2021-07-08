@@ -108,6 +108,7 @@
 
 	.typed-wrapper {
 		margin-top: 0;
+		min-height: 1.4375rem;
 
 		& :global(.typed-string) {
 			color: $accent-color;
